@@ -21,10 +21,6 @@ function render(ui) {
   ReactDOM.render(ui, container)
   return {
     container,
-    cleanup() {
-      ReactDOM.unmountComponentAtNode(container)
-      document.body.removeChild(container)
-    },
     ...getQueriesForElement(container),
   }
 }

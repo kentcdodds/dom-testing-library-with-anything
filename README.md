@@ -8,6 +8,65 @@ listed here, please add it!
 
 ## Contributing
 
+The prime example is this react version:
+
+```javascript
+// adds handy assertions we'll use
+import 'jest-dom/extend-expect'
+
+// framework imports
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+// dom-testing-library utilities
+// note: if your framework does not apply updates to the DOM synchronously
+// then you can use the fireEventAsync export in ./fire-event-async.js
+// see hyperapp.test.js for an example of this.
+import {getQueriesForElement, fireEvent} from 'dom-testing-library'
+
+// the component in your framework
+class Counter extends React.Component {
+  state = {count: 0}
+  increment = () => this.setState(({count}) => ({count: count + 1}))
+  render() {
+    return (
+      <div>
+        <button onClick={this.increment}>{this.state.count}</button>
+      </div>
+    )
+  }
+}
+
+// a generic "render" method that you could use for any component for
+// your framework
+function render(ui) {
+  const container = document.createElement('div')
+  document.body.appendChild(container)
+  ReactDOM.render(ui, container)
+  return {
+    container,
+    ...getQueriesForElement(container),
+  }
+}
+
+// the test.
+// This test _should_ look almost identical between each framework
+// that's the idea that I'm trying to get across in this repo!
+test('renders a counter', () => {
+  const {getByText} = render(<Counter />)
+  const counter = getByText('0')
+  fireEvent.click(counter)
+  expect(counter).toHaveTextContent('1')
+
+  fireEvent.click(counter)
+  expect(counter).toHaveTextContent('2')
+})
+```
+
+If you can make your example resemble that, I would be thrilled :)
+
+### IMPORTANT Notes
+
 I want to keep things as simple as possible, but I also want to be true to
 what's typical for a given framework. If your framework strongly encourages the
 use of TypeScript for example, then please feel free to use TypeScript (Jest
