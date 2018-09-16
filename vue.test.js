@@ -1,6 +1,7 @@
-import 'jest-dom/extend-expect'
-import {getQueriesForElement, fireEvent} from 'dom-testing-library'
 import Vue from 'vue/dist/vue'
+import 'jest-dom/extend-expect'
+import {fireEventAsync} from './fire-event-async'
+import {getQueriesForElement} from 'dom-testing-library'
 
 const Counter = {
   template: `
@@ -28,11 +29,9 @@ function render(Component) {
 test('counter increments', async () => {
   const {getByText} = render(Counter)
   const counter = getByText('0')
-  fireEvent.click(counter)
-  await Vue.nextTick()
+  await fireEventAsync.click(counter)
   expect(counter).toHaveTextContent('1')
 
-  fireEvent.click(counter)
-  await Vue.nextTick()
+  await fireEventAsync.click(counter)
   expect(counter).toHaveTextContent('2')
 })
