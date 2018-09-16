@@ -12,6 +12,8 @@
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
   "license": "MIT",
   "dependencies": {
+    "@cycle/dom": "^21.1.0",
+    "@cycle/run": "^4.4.0",
     "@polymer/polymer": "^3.0.5",
     "angular": "^1.7.4",
     "apprun": "^1.15.2",
