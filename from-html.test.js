@@ -27,7 +27,6 @@ class Counter {
   }
 }
 
-
 // from-html-testing-library
 function render(FromHtmlClass) {
   const instance = new FromHtmlClass()

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "precommit": "lint-staged"
   },
   "keywords": [],
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
@@ -31,8 +32,11 @@
     "@babel/preset-typescript": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "dom-testing-library": "^3.5.1",
+    "husky": "^0.14.3",
     "jest": "^23.6.0",
     "jest-dom": "^1.12.0",
+    "lint-staged": "^7.2.2",
+    "prettier": "^1.14.2",
     "react-dom": "^16.5.1"
   },
   "babel": {
