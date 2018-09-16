@@ -2,11 +2,7 @@ import 'jest-dom/extend-expect'
 import fromHTML from 'from-html/lib/from-html'
 import {getQueriesForElement, fireEvent} from 'dom-testing-library'
 
-function toggleHidden(el) {
-  el.hidden = !el.hidden
-}
-
-class SwitchButton {
+class Counter {
   constructor() {
     fromHTML(
       `
@@ -48,7 +44,7 @@ function render(FromHtmlClass) {
 
 // tests:
 test('counter increments', () => {
-  const {getByText} = render(SwitchButton)
+  const {getByText} = render(Counter)
   const counter = getByText('0')
   fireEvent.click(counter)
   expect(counter).toHaveTextContent('1')
