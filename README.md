@@ -8,6 +8,9 @@ listed here, please add it!
 
 ## Contributing
 
+> NOTE: In the interest of full disclosure, this repository will be used by me
+> to create a course on testing for which I will be paid.
+
 The prime example is this react version:
 
 ```javascript
