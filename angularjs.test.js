@@ -15,12 +15,12 @@ angular.module('myApp', [])
     }
   })
 
-function render(html) {
+function render(html, config) {
   const container = document.createElement('div')
   container.innerHTML = html
   document.body.appendChild(container)
 
-  angular.bootstrap(container, ['myApp'])
+  angular.bootstrap(container, config.modules)
 
   return {
     container,
@@ -29,7 +29,7 @@ function render(html) {
 }
 
 test('renders a counter', () => {
-  const {getByText} = render('<my-counter></my-counter>')
+  const {getByText} = render(`<my-counter></my-counter>`, { modules: ['myApp'] })
   const counter = getByText('0')
   fireEvent.click(counter)
   expect(counter).toHaveTextContent('1')
