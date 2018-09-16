@@ -2,8 +2,8 @@
 
 Anything you can render to the DOM, you can test with dom-testing-library.
 
-This repo is a bunch of simple examples of using `dom-testing-library` to test
-a `Counter` component in various frameworks. If your framework of choice is not
+This repo is a bunch of simple examples of using `dom-testing-library` to test a
+`Counter` component in various frameworks. If your framework of choice is not
 listed here, please add it!
 
 ## Contributing
@@ -78,6 +78,10 @@ the test itself.
 
 Try really hard to keep everything in a single file, even if that means
 authoring your component in a slightly non-typical way.
+
+This project is setup with prettier, husky, and lint-staged. That means that
+when you commit, a git commit hook will automatically format the files you're
+changing and run the tests relevant to those files. Neat right?
 
 ## LICENSE
 
