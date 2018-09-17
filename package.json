@@ -21,6 +21,7 @@
     "hyperapp": "^1.2.9",
     "jquery": "^3.3.1",
     "knockout": "^3.4.2",
+    "mithril": "^1.1.6",
     "preact": "^8.3.1",
     "react": "^16.5.1",
     "stimulus": "^1.1.0",
