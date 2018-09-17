@@ -12,6 +12,7 @@
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
   "license": "MIT",
   "dependencies": {
+    "@dojo/framework": "^3.0.0",
     "@polymer/polymer": "^3.0.5",
     "angular": "^1.7.4",
     "aurelia-framework": "^1.3.0",
