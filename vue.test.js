@@ -3,6 +3,8 @@ import 'jest-dom/extend-expect'
 import {fireEventAsync} from './fire-event-async'
 import {getQueriesForElement} from 'dom-testing-library'
 
+Vue.config.productionTip = false
+
 const Counter = {
   template: `
     <div>

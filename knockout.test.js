@@ -1,14 +1,14 @@
-import { fireEvent, getQueriesForElement } from 'dom-testing-library';
-import 'jest-dom/extend-expect';
-import $ from 'jquery';
-import ko from 'knockout';
+import {fireEvent, getQueriesForElement} from 'dom-testing-library'
+import 'jest-dom/extend-expect'
+import $ from 'jquery'
+import ko from 'knockout'
 
 var viewModel = {
-    counter: ko.observable(0),
-    increment: function(){
-        this.counter(this.counter() + 1);
-    }
-};
+  counter: ko.observable(0),
+  increment: function() {
+    this.counter(this.counter() + 1)
+  },
+}
 
 $.fn.countify = function countify() {
   this.html(`
@@ -16,7 +16,7 @@ $.fn.countify = function countify() {
       <button data-bind='text: counter, click: increment'></button>
     </div>
   `)
-  ko.applyBindings(viewModel, this.find('button')[0]);
+  ko.applyBindings(viewModel, this.find('button')[0])
 }
 
 // tests:
