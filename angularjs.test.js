@@ -17,10 +17,7 @@ angular.module('myApp', []).component('myCounter', {
 function render(html, config) {
   const container = document.createElement('div')
   container.innerHTML = html
-  document.body.appendChild(container)
-
   angular.bootstrap(container, config.modules)
-
   return {
     container,
     ...getQueriesForElement(container),
