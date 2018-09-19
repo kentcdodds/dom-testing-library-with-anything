@@ -18,12 +18,18 @@ const Counter = () => {
   }
 }
 
+function render(component) {
+  const container = document.createElement('div')
+  m.mount(container, component)
+  return {
+    container,
+    ...getQueriesForElement(container),
+  }
+}
+
 // tests:
 test('counter increments', async () => {
-  const div = document.createElement('div')
-  m.mount(div, Counter)
-
-  const {getByText} = getQueriesForElement(div)
+  const {getByText} = render(Counter)
   const counter = getByText('0')
   fireEvent.click(counter)
   await wait(() => expect(counter).toHaveTextContent('1'))
