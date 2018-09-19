@@ -1,6 +1,5 @@
-/** @jsx hyperapp.h */
 import 'jest-dom/extend-expect'
-import * as hyperapp from 'hyperapp'
+import {h, app} from 'hyperapp'
 import {getQueriesForElement, wait} from 'dom-testing-library'
 import {fireEventAsync} from './fire-event-async'
 
@@ -10,11 +9,10 @@ export const actions = {
   increment: value => state => ({count: state.count + value}),
 }
 
-export const view = (state, actions) => (
-  <div>
-    <button onclick={() => actions.increment(1)}>{state.count}</button>
-  </div>
-)
+export const view = (state, actions) =>
+  h('div', {}, [
+    h('button', { onclick: () => actions.increment(1) }, state.count)
+  ])
 
 async function render({
   state,
@@ -22,7 +20,7 @@ async function render({
   actions,
   container = document.createElement('div'),
 }) {
-  hyperapp.app(state, actions, view, container)
+  app(state, actions, view, container)
   await wait() // hyperapp renders on the next tick
   return {
     container,
