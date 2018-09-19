@@ -25,11 +25,9 @@ function render(component: any) {
   }).compileComponents()
 
   const fixture = TestBed.createComponent(component)
-  const nativeElement = fixture.debugElement.nativeElement
+  const container = fixture.debugElement.nativeElement
 
-  return {
-    ...getQueriesForElement(nativeElement),
-  }
+  return getQueriesForElement(container)
 }
 
 test('renders a counter', () => {
