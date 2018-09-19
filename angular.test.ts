@@ -3,7 +3,8 @@ import 'jest-dom/extend-expect'
 
 import {TestBed, ComponentFixtureAutoDetect} from '@angular/core/testing'
 import {Component} from '@angular/core'
-import {getQueriesForElement, fireEvent} from 'dom-testing-library'
+import {fireEventAsync} from './fire-event-async'
+import {getQueriesForElement, fireEvent, wait} from 'dom-testing-library'
 
 @Component({
   template: `<div>
@@ -32,13 +33,13 @@ function render(component: any) {
   }
 }
 
-test('renders a counter', () => {
+test('renders a counter', async () => {
   const {getByText} = render(AppComponent)
   const counter = getByText('0')
 
-  fireEvent.click(counter)
+  await fireEventAsync.click(counter)
   expect(counter).toHaveTextContent('1')
 
-  fireEvent.click(counter)
+  await fireEventAsync.click(counter)
   expect(counter).toHaveTextContent('2')
 })
