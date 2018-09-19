@@ -18,7 +18,6 @@ class Counter extends WidgetBase {
 
 function render(ui: Constructor<WidgetBase>) {
   const container = document.createElement('div')
-  document.body.appendChild(container)
   const Projector = ProjectorMixin(ui)
   const projector = new Projector()
   projector.async = false
