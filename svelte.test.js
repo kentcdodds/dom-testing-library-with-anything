@@ -13,7 +13,7 @@ const counterTemplate = `
 function render(template, options) {
   const container = document.createElement('div')
   const Constructor = svelte.create(template)
-  const counter = new Constructor({
+  new Constructor({
     target: container,
     ...options,
   })
