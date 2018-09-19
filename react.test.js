@@ -17,20 +17,25 @@ class Counter extends React.Component {
 
 function render(ui) {
   const container = document.createElement('div')
-  document.body.appendChild(container)
   ReactDOM.render(ui, container)
+  document.body.appendChild(container)
   return {
-    container,
     ...getQueriesForElement(container),
+    container,
+    cleanup() {
+      ReactDOM.unmountComponentAtNode(container)
+      document.body.removeChild(container)
+    },
   }
 }
 
 test('renders a counter', () => {
-  const {getByText} = render(<Counter />)
+  const {getByText, cleanup} = render(<Counter />)
   const counter = getByText('0')
   fireEvent.click(counter)
   expect(counter).toHaveTextContent('1')
 
   fireEvent.click(counter)
   expect(counter).toHaveTextContent('2')
+  cleanup()
 })
