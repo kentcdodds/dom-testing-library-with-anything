@@ -8,10 +8,11 @@ Vue.config.productionTip = false
 const Counter = {
   template: `
     <div>
-        <button @click='increment'>
-            {{count}}
-        </button>
-    </div>`,
+      <button @click='increment'>
+        {{count}}
+      </button>
+    </div>
+  `,
   data: () => ({count: 0}),
   methods: {
     increment() {
