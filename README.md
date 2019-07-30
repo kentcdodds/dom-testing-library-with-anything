@@ -1,8 +1,8 @@
-# dom-testing-library with ANYTHING
+# DOM Testing Library with ANYTHING
 
-Anything you can render to the DOM, you can test with dom-testing-library.
+Anything you can render to the DOM, you can test with DOM Testing Library.
 
-This repo is a bunch of simple examples of using `dom-testing-library` to test a
+This repo is a bunch of simple examples of using DOM Testing Library to test a
 `Counter` component in various frameworks. If your framework of choice is not
 listed here, please add it!
 
