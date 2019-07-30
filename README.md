@@ -21,23 +21,21 @@ import '@testing-library/jest-dom/extend-expect'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-// dom-testing-library utilities
+// DOM Testing Library utilities
 // note: if your framework does not apply updates to the DOM synchronously
 // then you can use the fireEventAsync export in ./fire-event-async.js
 // see hyperapp.test.js for an example of this.
 import {getQueriesForElement, fireEvent} from '@testing-library/dom'
 
 // the component in your framework
-class Counter extends React.Component {
-  state = {count: 0}
-  increment = () => this.setState(({count}) => ({count: count + 1}))
-  render() {
-    return (
-      <div>
-        <button onClick={this.increment}>{this.state.count}</button>
-      </div>
-    )
-  }
+function Counter() {
+  const [count, setCount] = React.useState(0)
+  const increment = () => setCount(c => c + 1)
+  return (
+    <div>
+      <button onClick={increment}>{count}</button>
+    </div>
+  )
 }
 
 // a generic "render" method that you could use for any component for
