@@ -1,6 +1,6 @@
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 import fromHTML from 'from-html/lib/from-html'
-import {getQueriesForElement, fireEvent} from 'dom-testing-library'
+import {getQueriesForElement, fireEvent} from '@testing-library/dom'
 
 class Counter {
   constructor() {
@@ -38,7 +38,7 @@ function render(FromHtmlClass) {
     ...getQueriesForElement(container),
   }
 }
-// export * from 'dom-testing-library'
+// export * from '@testing-library/dom'
 // export {render}
 
 // tests:

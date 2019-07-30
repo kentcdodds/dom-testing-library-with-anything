@@ -1,4 +1,4 @@
-import {fireEvent, wait} from 'dom-testing-library'
+import {fireEvent, wait} from '@testing-library/dom'
 
 const fireEventAsync = {}
 

@@ -15,7 +15,7 @@ The prime example is this react version:
 
 ```javascript
 // adds handy assertions we'll use
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 
 // framework imports
 import React from 'react'
@@ -25,7 +25,7 @@ import ReactDOM from 'react-dom'
 // note: if your framework does not apply updates to the DOM synchronously
 // then you can use the fireEventAsync export in ./fire-event-async.js
 // see hyperapp.test.js for an example of this.
-import {getQueriesForElement, fireEvent} from 'dom-testing-library'
+import {getQueriesForElement, fireEvent} from '@testing-library/dom'
 
 // the component in your framework
 class Counter extends React.Component {

@@ -2,8 +2,8 @@ import ProjectorMixin from '@dojo/framework/widget-core/mixins/Projector'
 import WidgetBase from '@dojo/framework/widget-core/WidgetBase'
 import {v} from '@dojo/framework/widget-core/d'
 import {Constructor} from '@dojo/framework/widget-core/interfaces'
-import {getQueriesForElement, fireEvent} from 'dom-testing-library'
-import 'jest-dom/extend-expect'
+import {getQueriesForElement, fireEvent} from '@testing-library/dom'
+import '@testing-library/jest-dom/extend-expect'
 
 class Counter extends WidgetBase {
   count = 0

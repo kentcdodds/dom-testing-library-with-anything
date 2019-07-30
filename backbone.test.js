@@ -1,8 +1,8 @@
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 import $ from 'jquery'
 import Backbone from 'backbone'
 import fromHTML from 'from-html/lib/from-html'
-import {getQueriesForElement, fireEvent} from 'dom-testing-library'
+import {getQueriesForElement, fireEvent} from '@testing-library/dom'
 
 const Counter = Backbone.View.extend({
   initialize() {

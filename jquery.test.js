@@ -1,6 +1,6 @@
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 import $ from 'jquery'
-import {getQueriesForElement, fireEvent} from 'dom-testing-library'
+import {getQueriesForElement, fireEvent} from '@testing-library/dom'
 
 $.fn.countify = function countify() {
   this.html(`

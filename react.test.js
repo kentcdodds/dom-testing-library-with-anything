@@ -1,18 +1,16 @@
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {getQueriesForElement, fireEvent} from 'dom-testing-library'
+import {getQueriesForElement, fireEvent} from '@testing-library/dom'
 
-class Counter extends React.Component {
-  state = {count: 0}
-  increment = () => this.setState(({count}) => ({count: count + 1}))
-  render() {
-    return (
-      <div>
-        <button onClick={this.increment}>{this.state.count}</button>
-      </div>
-    )
-  }
+function Counter() {
+  const [count, setCount] = React.useState(0)
+  const increment = () => setCount(c => c + 1)
+  return (
+    <div>
+      <button onClick={increment}>{count}</button>
+    </div>
+  )
 }
 
 function render(ui) {

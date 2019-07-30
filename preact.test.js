@@ -1,8 +1,7 @@
 /** @jsx Preact.h */
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 import * as Preact from 'preact'
-import {fireEventAsync} from './fire-event-async'
-import {getQueriesForElement, wait} from 'dom-testing-library'
+import {getQueriesForElement, fireEvent, wait} from '@testing-library/dom'
 
 class Counter extends Preact.Component {
   state = {count: 0}
@@ -28,8 +27,9 @@ function render(ui) {
 test('renders a counter', async () => {
   const {getByText} = render(<Counter />)
   const counter = getByText('0')
-  await fireEventAsync.click(counter)
-  expect(counter).toHaveTextContent('1')
-  await fireEventAsync.click(counter)
-  expect(counter).toHaveTextContent('2')
+  fireEvent.click(counter)
+  await wait(() => expect(counter).toHaveTextContent('1'))
+
+  fireEvent.click(counter)
+  await wait(() => expect(counter).toHaveTextContent('2'))
 })

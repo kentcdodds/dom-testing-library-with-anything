@@ -1,6 +1,6 @@
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 import m from 'mithril'
-import {getQueriesForElement, fireEvent, wait} from 'dom-testing-library'
+import {getQueriesForElement, fireEvent, wait} from '@testing-library/dom'
 
 const Counter = () => {
   let count = 0

@@ -1,34 +1,32 @@
-import 'jest-dom/extend-expect'
-import {getQueriesForElement, fireEvent} from 'dom-testing-library'
+import '@testing-library/jest-dom/extend-expect'
+import {fireEventAsync} from './fire-event-async'
+import {getQueriesForElement, fireEvent, wait} from '@testing-library/dom'
 import * as svelte from 'svelte'
+import Counter from './counter.svelte'
 
-const counterTemplate = `
-  <div>
-    <button on:click='set({ count: count + 1 })'>
-      {count}
-    </button>
-  </div>
-`
-
-function render(template, options) {
+function render(Component) {
   const container = document.createElement('div')
-  const Constructor = svelte.create(template)
-  new Constructor({
-    target: container,
-    ...options,
-  })
+  document.body.appendChild(container)
+
+  const ComponentConstructor = Component.default || Component
+  const component = new ComponentConstructor({target: container})
+
   return {
+    ...getQueriesForElement(document.body),
     container,
-    ...getQueriesForElement(container),
+    cleanup() {
+      component.$destroy()
+      document.body.removeChild(container)
+    },
   }
 }
 
-test('counter increments', () => {
-  const {getByText} = render(counterTemplate, {data: {count: 0}})
+test('counter increments', async () => {
+  const {getByText} = render(Counter)
   const counter = getByText('0')
-  fireEvent.click(counter)
+  await fireEventAsync.click(counter)
   expect(counter).toHaveTextContent('1')
 
-  fireEvent.click(counter)
+  await fireEventAsync.click(counter)
   expect(counter).toHaveTextContent('2')
 })

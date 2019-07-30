@@ -1,5 +1,5 @@
-import {fireEvent, getQueriesForElement} from 'dom-testing-library'
-import 'jest-dom/extend-expect'
+import {fireEvent, getQueriesForElement} from '@testing-library/dom'
+import '@testing-library/jest-dom/extend-expect'
 import $ from 'jquery'
 import ko from 'knockout'
 

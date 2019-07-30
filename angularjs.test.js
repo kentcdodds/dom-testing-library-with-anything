@@ -1,5 +1,5 @@
-import 'jest-dom/extend-expect'
-import {getQueriesForElement, fireEvent} from 'dom-testing-library'
+import '@testing-library/jest-dom/extend-expect'
+import {getQueriesForElement, fireEvent} from '@testing-library/dom'
 import angular from 'angular'
 
 angular.module('myApp', []).component('myCounter', {

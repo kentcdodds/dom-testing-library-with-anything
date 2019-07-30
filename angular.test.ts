@@ -1,14 +1,16 @@
 import 'jest-preset-angular'
-import 'jest-dom/extend-expect'
+import '@testing-library/jest-dom/extend-expect'
 
 import {TestBed, ComponentFixtureAutoDetect} from '@angular/core/testing'
 import {Component} from '@angular/core'
-import {getQueriesForElement, fireEvent} from 'dom-testing-library'
+import {getQueriesForElement, fireEvent} from '@testing-library/dom'
 
 @Component({
-  template: `<div>
-               <button (click)="increment()">{{count}}</button>
-             </div>`,
+  template: `
+    <div>
+      <button (click)="increment()">{{ count }}</button>
+    </div>
+  `,
 })
 export class AppComponent {
   count = 0
