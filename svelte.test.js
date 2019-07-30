@@ -7,8 +7,7 @@ import Counter from './counter.svelte'
 function render(Component) {
   const container = document.createElement('div')
 
-  const ComponentConstructor = Component
-  const component = new ComponentConstructor({target: container})
+  new Component({target: container})
 
   return {
     ...getQueriesForElement(container),
