@@ -9,10 +9,7 @@ function render(Component) {
 
   new Component({target: container})
 
-  return {
-    ...getQueriesForElement(container),
-    container,
-  }
+  return {container, ...getQueriesForElement(container)}
 }
 
 test('counter increments', async () => {
