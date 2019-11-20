@@ -12,7 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "@dojo/framework": "^5.0.4",
-    "angular": "^1.7.8",
+    "angular": "^1.7.9",
     "backbone": "^1.4.0",
     "from-html": "^0.3.3",
     "hyperapp": "^1.2.10",
