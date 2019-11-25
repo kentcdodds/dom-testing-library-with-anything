@@ -1,27 +1,24 @@
-import ProjectorMixin from '@dojo/framework/widget-core/mixins/Projector'
-import WidgetBase from '@dojo/framework/widget-core/WidgetBase'
-import {v} from '@dojo/framework/widget-core/d'
-import {Constructor} from '@dojo/framework/widget-core/interfaces'
+import WidgetBase from '@dojo/framework/core/WidgetBase'
+import {Constructor} from '@dojo/framework/core/interfaces'
+import {renderer, v, w} from '@dojo/framework/core/vdom'
 import {getQueriesForElement, fireEvent} from '@testing-library/dom'
 import '@testing-library/jest-dom/extend-expect'
 
 class Counter extends WidgetBase {
   count = 0
-  increment() {
+  private increment() {
     this.count++
     this.invalidate()
   }
-  render() {
+  protected render() {
     return v('div', [v('button', {onclick: this.increment}, [`${this.count}`])])
   }
 }
 
 function render(ui: Constructor<WidgetBase>) {
   const container = document.createElement('div')
-  const Projector = ProjectorMixin(ui)
-  const projector = new Projector()
-  projector.async = false
-  projector.append(container)
+  const r = renderer(() => w(ui, {}))
+  r.mount({domNode: container, sync: true})
   return {
     container,
     ...getQueriesForElement(container),

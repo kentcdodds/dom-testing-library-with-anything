@@ -1,29 +1,24 @@
 /** @jsx hyperapp.h */
 import '@testing-library/jest-dom/extend-expect'
-import * as hyperapp from 'hyperapp/dist/hyperapp'
-import {fireEventAsync} from './fire-event-async'
-import {getQueriesForElement, wait} from '@testing-library/dom'
+import * as hyperapp from 'hyperapp'
+import {getQueriesForElement, wait, fireEvent} from '@testing-library/dom'
 
-export const state = {count: 0}
+const state = {count: 0}
 
-export const actions = {
-  increment: value => state => ({count: state.count + value}),
-}
-
-export const view = (state, actions) => (
+const view = state => (
   <div>
-    <button onclick={() => actions.increment(1)}>{state.count}</button>
+    <button onclick={s => ({count: s.count + 1})}>{state.count}</button>
   </div>
 )
 
 async function render({
   state,
   view,
-  actions,
   container = document.createElement('div'),
 }) {
-  hyperapp.app(state, actions, view, container)
-  await wait()
+  hyperapp.app({init: state, view, node: container})
+  document.body.appendChild(container)
+  await wait(() => expect(container).not.toBeEmpty())
   return {
     container,
     ...getQueriesForElement(container),
@@ -34,11 +29,11 @@ async function render({
 // export * from '@testing-library/dom'
 
 test('renders a counter', async () => {
-  const {getByText, getByTestId} = await render({state, view, actions})
-  const counter = getByText('0')
-  await fireEventAsync.click(counter)
-  expect(counter).toHaveTextContent('1')
+  const {findByText} = await render({state, view})
+  const counter = await findByText('0')
+  fireEvent.click(counter)
+  await wait(() => expect(counter).toHaveTextContent('1'))
 
-  await fireEventAsync.click(counter)
-  expect(counter).toHaveTextContent('2')
+  fireEvent.click(counter)
+  await wait(() => expect(counter).toHaveTextContent('2'))
 })
