@@ -1,4 +1,19 @@
-# DOM Testing Library with ANYTHING
+<h1 align="center">
+  Testing ANYTHING with DOM Testing Library
+</h1>
+
+<div align="center">
+  <h2><a href="https://testingjavascript.com">TestingJavaScript.com</a></h2>
+  <a href="https://testingjavascript.com">
+    <img
+      width="500"
+      alt="Learn the smart, efficient way to test any JavaScript application."
+      src="https://kentcdodds.com/images/testingjavascript-promo/tjs-4.jpg"
+    />
+  </a>
+</div>
+
+<hr />
 
 Anything you can render to the DOM, you can test with DOM Testing Library.
 
