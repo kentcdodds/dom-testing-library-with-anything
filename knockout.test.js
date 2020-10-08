@@ -1,11 +1,12 @@
-import {fireEvent, getQueriesForElement} from '@testing-library/dom'
+import {getQueriesForElement} from '@testing-library/dom'
 import '@testing-library/jest-dom/extend-expect'
+import userEvent from '@testing-library/user-event'
 import $ from 'jquery'
 import ko from 'knockout'
 
 var viewModel = {
   counter: ko.observable(0),
-  increment: function() {
+  increment: function () {
     this.counter(this.counter() + 1)
   },
 }
@@ -25,9 +26,9 @@ test('counter increments', () => {
   $(div).countify()
   const {getByText} = getQueriesForElement(div)
   const counter = getByText('0')
-  fireEvent.click(counter)
+  userEvent.click(counter)
   expect(counter).toHaveTextContent('1')
 
-  fireEvent.click(counter)
+  userEvent.click(counter)
   expect(counter).toHaveTextContent('2')
 })

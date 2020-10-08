@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom/extend-expect'
 import fromHTML from 'from-html/lib/from-html'
-import {getQueriesForElement, fireEvent} from '@testing-library/dom'
+import {getQueriesForElement} from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
 
 class Counter {
   constructor() {
@@ -45,9 +46,9 @@ function render(FromHtmlClass) {
 test('counter increments', () => {
   const {getByText} = render(Counter)
   const counter = getByText('0')
-  fireEvent.click(counter)
+  userEvent.click(counter)
   expect(counter).toHaveTextContent('1')
 
-  fireEvent.click(counter)
+  userEvent.click(counter)
   expect(counter).toHaveTextContent('2')
 })

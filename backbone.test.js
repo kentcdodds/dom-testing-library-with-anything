@@ -2,7 +2,8 @@ import '@testing-library/jest-dom/extend-expect'
 import $ from 'jquery'
 import Backbone from 'backbone'
 import fromHTML from 'from-html/lib/from-html'
-import {getQueriesForElement, fireEvent} from '@testing-library/dom'
+import {getQueriesForElement} from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
 
 const Counter = Backbone.View.extend({
   initialize() {
@@ -30,9 +31,9 @@ test.skip('counter increments', () => {
   new Counter({el: div})
   const {getByText} = getQueriesForElement(div)
   const counter = getByText('0')
-  fireEvent.click(counter)
+  userEvent.click(counter)
   expect(counter).toHaveTextContent('1')
 
-  fireEvent.click(counter)
+  userEvent.click(counter)
   expect(counter).toHaveTextContent('2')
 })

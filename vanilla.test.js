@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom/extend-expect'
-import {getQueriesForElement, fireEvent} from '@testing-library/dom'
+import {getQueriesForElement} from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
 
 function countify(el) {
   el.innerHTML = `
@@ -21,9 +22,9 @@ test('counter increments', () => {
   countify(div)
   const {getByText} = getQueriesForElement(div)
   const counter = getByText('0')
-  fireEvent.click(counter)
+  userEvent.click(counter)
   expect(counter).toHaveTextContent('1')
 
-  fireEvent.click(counter)
+  userEvent.click(counter)
   expect(counter).toHaveTextContent('2')
 })

@@ -38,9 +38,10 @@ import ReactDOM from 'react-dom'
 
 // DOM Testing Library utilities
 // note: if your framework does not apply updates to the DOM synchronously
-// then you can use the fireEventAsync export in ./fire-event-async.js
+// then you can use the userEventAsync export in ./fire-event-async.js
 // see hyperapp.test.js for an example of this.
-import {getQueriesForElement, fireEvent} from '@testing-library/dom'
+import {getQueriesForElement} from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
 
 // the component in your framework
 function Counter() {
@@ -71,10 +72,10 @@ function render(ui) {
 test('renders a counter', () => {
   const {getByText} = render(<Counter />)
   const counter = getByText('0')
-  fireEvent.click(counter)
+  userEvent.click(counter)
   expect(counter).toHaveTextContent('1')
 
-  fireEvent.click(counter)
+  userEvent.click(counter)
   expect(counter).toHaveTextContent('2')
 })
 ```

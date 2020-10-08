@@ -1,6 +1,6 @@
 import Vue from 'vue/dist/vue'
 import '@testing-library/jest-dom/extend-expect'
-import {fireEventAsync} from './fire-event-async'
+import {userEventAsync} from './user-event-async'
 import {getQueriesForElement} from '@testing-library/dom'
 
 Vue.config.productionTip = false
@@ -32,9 +32,9 @@ function render(Component) {
 test('counter increments', async () => {
   const {getByText} = render(Counter)
   const counter = getByText('0')
-  await fireEventAsync.click(counter)
+  await userEventAsync.click(counter)
   expect(counter).toHaveTextContent('1')
 
-  await fireEventAsync.click(counter)
+  await userEventAsync.click(counter)
   expect(counter).toHaveTextContent('2')
 })

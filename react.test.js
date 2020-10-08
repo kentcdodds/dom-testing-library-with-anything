@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom/extend-expect'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {getQueriesForElement, fireEvent} from '@testing-library/dom'
+import {getQueriesForElement} from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
 
 function Counter() {
   const [count, setCount] = React.useState(0)
@@ -30,10 +31,10 @@ function render(ui) {
 test('renders a counter', () => {
   const {getByText, cleanup} = render(<Counter />)
   const counter = getByText('0')
-  fireEvent.click(counter)
+  userEvent.click(counter)
   expect(counter).toHaveTextContent('1')
 
-  fireEvent.click(counter)
+  userEvent.click(counter)
   expect(counter).toHaveTextContent('2')
   cleanup()
 })
