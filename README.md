@@ -38,7 +38,7 @@ import ReactDOM from 'react-dom'
 
 // DOM Testing Library utilities
 // note: if your framework does not apply updates to the DOM synchronously
-// then you can use the userEventAsync export in ./fire-event-async.js
+// then you can use the userEventAsync export in ./user-event-async.js
 // see hyperapp.test.js for an example of this.
 import {getQueriesForElement} from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'

@@ -1,7 +1,6 @@
 import '@testing-library/jest-dom/extend-expect'
 import {userEventAsync} from './user-event-async'
 import {getQueriesForElement} from '@testing-library/dom'
-import * as svelte from 'svelte'
 import Counter from './counter.svelte'
 
 function render(Component) {

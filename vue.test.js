@@ -4,6 +4,7 @@ import {userEventAsync} from './user-event-async'
 import {getQueriesForElement} from '@testing-library/dom'
 
 Vue.config.productionTip = false
+Vue.config.devtools = false
 
 const Counter = {
   template: `
