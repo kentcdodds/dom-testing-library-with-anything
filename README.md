@@ -33,7 +33,7 @@ The prime example is this react version:
 import '@testing-library/jest-dom/extend-expect'
 
 // framework imports
-import React from 'react'
+import * as React from 'react'
 import ReactDOM from 'react-dom'
 
 // DOM Testing Library utilities
